@@ -212,7 +212,9 @@ const ShortsVideoItem: React.FC<{
                 const vid = e.currentTarget.querySelector('video');
                 if (vid) {
                     if (vid.paused) {
-                        vid.play().catch(() => {}); // Catch play interruption error
+                        vid.play().catch(() => {
+                            // Suppress "The play() request was interrupted by a call to pause()"
+                        });
                     } else {
                         vid.pause();
                     }
